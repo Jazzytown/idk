@@ -1,0 +1,33 @@
+function setup() {
+    createCanvas(1600,500);
+  Wall=createSprite(1600,100,50,50);
+
+
+  speed=random(55,90);
+  weight=random(400,1500);
+
+   
+  vroomvroom=createSprite(60,100,30,20);
+  vroomvroom.shapeColor=color(5,7,8)
+  vroomvroom.velocityX=speed;
+}
+
+function draw() {
+  background(255,255,255);  
+  if(Wall.x-vroomvroom.x < (vroomvroom.width+Wall.width)/2){
+    vroomvroom.velocityX=0;
+    var deformation= 0.5 * weight * speed* speed/22509
+  }
+  if(deformation>180){
+     vroomvroom.shapeColor=color(255,0,0);
+ }
+  if(deformation<180 && deformation>100){
+    vroomvroom.shapeColor=color(230,230,0);
+  }
+  if(deformation<100){
+    vroomvroom.shapeColor=color(255);
+  }
+
+
+  drawSprites();
+}
